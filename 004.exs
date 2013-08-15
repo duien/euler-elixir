@@ -33,4 +33,26 @@ defmodule Euler do
     Enum.max(palindrome_products(max))
   end
 
+  def lp(a, p) do
+    case a > p and is_palindrome(a) do
+      true -> a 
+      false -> p
+    end
+  end
+
+  def flpp(max, current_a // 1, current_b // 1, largest_palindrome // 0)
+  def flpp(max, current_a, current_b, largest_palindrome)
+      when current_b == max and current_a == max do
+    lp(current_a * current_b, largest_palindrome)
+  end
+  def flpp(max, current_a, current_b, largest_palindrome)
+      when current_b == max do
+    flpp(max, current_a + 1, current_a + 1, lp(current_a * current_b, largest_palindrome))
+  end
+  def flpp(max, current_a, current_b, largest_palindrome) do
+      # when current_a == max do
+    flpp(max, current_a, current_b + 1, lp(current_a * current_b, largest_palindrome))
+  end
+
+
 end
